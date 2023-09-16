@@ -26,7 +26,7 @@ const PostPreview = ({id, title, author, text, image}) =>
     }
 
     return (
-    <div classname={styles.component}>
+    <div className={styles.component}>
         <div className={styles.postCopy}>
             <h1>{title}</h1>
             <h5>{author}</h5>
