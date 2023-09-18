@@ -7,6 +7,7 @@ import customStyles from "../css/WriteBlog.module.css";
 
 const WriteBlog = () => {
   const [previewing, setPreviewing] = useState(false);
+  const [location, setLocation] = useState("");
   const [blogTitle, setBlogTitle] = useState("");
   const [blogContent, setBlogContent] = useState("");
 
@@ -79,6 +80,10 @@ const WriteBlog = () => {
   const locationPicker = (
     <Autocomplete
       disablePortal
+      value={location}
+      onChange={(event, newValue) => {
+        setLocation(newValue);
+      }}
       id="location-picker"
       options={requestLocatonOptions()}
       sx={{ width: 300 }}
@@ -102,6 +107,7 @@ const WriteBlog = () => {
       />
 
       <textArea
+        spellcheck="true"
         value={blogContent}
         onChange={(e) => setBlogContent(e.target.value)}
         className={customStyles.BlogInput}
@@ -113,6 +119,7 @@ const WriteBlog = () => {
   const previewView = (
     <div>
       <h1>{blogTitle}</h1>
+      <h2>{location}</h2>
       <p>{blogContent}</p>
     </div>
   );
