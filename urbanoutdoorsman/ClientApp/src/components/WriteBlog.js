@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import Tags from "./Tags";
 import StyledButton from "./StyledButton";
 import customStyles from "../css/WriteBlog.module.css";
 
@@ -10,15 +11,11 @@ const WriteBlog = () => {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogContent, setBlogContent] = useState("");
 
-  let [pageTitle, setPageTitle] = useState(null);
+  const [tags, setTags] = useState([]);
 
-  // // 3. Create out useEffect function
-  // useEffect(() => {
-  //   fetch("blogpost")
-  //     .then((response) => response.json())
-  //     // 4. Setting *dogImage* to the image url that we received from the response above
-  //     .then((data) => setPageTitle(data.title));
-  // }, []);
+  const requestTagOptions = () => {
+    return "Canoing", "Hiking", "Camping";
+  };
 
   const requestLocatonOptions = () => {
     return [
@@ -107,6 +104,7 @@ const WriteBlog = () => {
         text="Request a new Location"
         onClick={() => alert("Adding a new location")}
       />
+      <Tags />
       <TextField
         value={blogTitle}
         onChange={(e) => setBlogTitle(e.target.value)}
@@ -138,9 +136,10 @@ const WriteBlog = () => {
       Title: blogTitle,
       Text: blogContent,
       Location: location,
+      Tags: ["Camping", "Hiking"],
     };
 
-    const response = await fetch("/blogpost", {
+    const response = await fetch("blogpost", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -161,7 +160,6 @@ const WriteBlog = () => {
 
   return (
     <div>
-      <h1>{pageTitle}</h1>
       {previewing ? previewView : inputView}
       <StyledButton
         text={previewing ? "Edit" : "Preview Your Post"}

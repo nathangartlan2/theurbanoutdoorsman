@@ -1,11 +1,11 @@
 import { FetchData } from "./components/FetchData";
 import WriteBlog from "./components/WriteBlog";
-import { Home } from "./components/Home";
+import HomeView from "./components/HomeView";
 
 const AppRoutes = [
   {
     index: true,
-    element: <Home />,
+    element: <HomeView />,
   },
   {
     path: "/fetch-data",
