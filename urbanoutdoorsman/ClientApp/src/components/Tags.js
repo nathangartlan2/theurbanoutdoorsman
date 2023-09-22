@@ -27,7 +27,7 @@ const Tags = () => {
   };
 
   const addTag = (tag) => {
-    if (!tags.includes(tag)) {
+    if (!tags.includes(tag) && tag !== "") {
       setTags((prevState) => [...prevState, tag]);
     }
   };
@@ -35,21 +35,26 @@ const Tags = () => {
   return (
     <div>
       <Autocomplete
-        value={inputValue}
-        onChange={(e, newValue) => setInputValue(newValue)}
+        value={""}
+        onChange={(e, newValue) => {
+          addTag(newValue);
+          setInputValue("");
+        }}
         disablePortal
         id="tag-autocomplete"
         options={getTags()}
         sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="Tags" />}
       />
-      <StyledButton
-        text="Add Tag"
-        onClick={() => addTag(inputValue)}
-      ></StyledButton>
       <ul>
         {tags.map((tag) => {
-          return <li>{tag}</li>;
+          return (
+            <li>
+              <div>
+                <p>{tag}</p>
+              </div>
+            </li>
+          );
         })}
       </ul>
     </div>
