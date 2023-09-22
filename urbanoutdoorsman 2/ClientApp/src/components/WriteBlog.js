@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import StyledButton from "./StyledButton";
@@ -9,16 +10,6 @@ const WriteBlog = () => {
   const [location, setLocation] = useState("");
   const [blogTitle, setBlogTitle] = useState("");
   const [blogContent, setBlogContent] = useState("");
-
-  let [pageTitle, setPageTitle] = useState(null);
-
-  // // 3. Create out useEffect function
-  // useEffect(() => {
-  //   fetch("blogpost")
-  //     .then((response) => response.json())
-  //     // 4. Setting *dogImage* to the image url that we received from the response above
-  //     .then((data) => setPageTitle(data.title));
-  // }, []);
 
   const requestLocatonOptions = () => {
     return [
@@ -133,35 +124,14 @@ const WriteBlog = () => {
     </div>
   );
 
-  const sumbitPost = async () => {
-    const data = {
-      Title: blogTitle,
-      Text: blogContent,
-      Location: location,
-    };
-
-    const response = await fetch("/blogpost", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      const jsonResponse = await response.json();
-      alert(JSON.stringify(jsonResponse)); // Convert the JSON response to a string and display it
-    } else {
-      alert("Error: " + response.status);
-    }
+  const sumbitPost = () => {
+    alert("Your post was submitted");
   };
 
   const submitButton = <StyledButton text="Submit Post" onClick={sumbitPost} />;
 
   return (
     <div>
-      <h1>{pageTitle}</h1>
       {previewing ? previewView : inputView}
       <StyledButton
         text={previewing ? "Edit" : "Preview Your Post"}
