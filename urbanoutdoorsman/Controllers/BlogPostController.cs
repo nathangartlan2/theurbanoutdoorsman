@@ -25,25 +25,24 @@ public class BlogPostController : ControllerBase
     }
 
     [HttpGet]
-    public BlogPost Get()
+    public async Task<IActionResult> Get()
     {
-        return new BlogPost
-        {
-            Title = "Hardcoded"
-        };
+        IEnumerable<BlogPost> posts = await _retriever.GetAllBlogPosts();
+        return Ok(posts);
     }
 
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] BlogPost blog)
     {
-        bool result = await _retriever.IndexBlogPostAsync(blog);
-        if (result)
+
+        try
         {
+            await _retriever.IndexBlogPostAsync(blog);
             return Ok();
         }
-        else
+        catch (Exception ex)
         {
-            return BadRequest();
+            return BadRequest(ex);
         }
     }
 }

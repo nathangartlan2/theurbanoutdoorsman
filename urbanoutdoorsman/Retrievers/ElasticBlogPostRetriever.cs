@@ -29,6 +29,13 @@ namespace urbanoutdoorsman
 
 
         }
+
+        public async Task<IEnumerable<BlogPost>> GetAllBlogPosts()
+        {
+            var response = await _client.SearchAsync<BlogPost>(s => s.Index(_index));
+            IEnumerable<BlogPost> allPosts  = response.Documents;
+            return allPosts;
+        }
     }
 }
 

@@ -26,24 +26,6 @@ export class Home extends React.Component {
             author={"Chat GPT"}
             image={denaliMountain}
           />
-
-          <PostPreview
-            title={"Yellowstone 2019"}
-            text={
-              "Car camping in Yellowstone National Park is a gateway to experiencing the unparalleled natural beauty and captivating wilderness of this iconic destination. Nestled amidst the Rocky Mountains, Yellowstone offers car campers a front-row seat to the park's breathtaking geothermal wonders, pristine lakes, lush forests, and abundant wildlife. With well-maintained campgrounds scattered throughout the park, visitors can easily access the park's main attractions, including the renowned Old Faithful geyser, colorful hot springs like Grand Prismatic, and the awe-inspiring Grand Canyon of the Yellowstone. As the sun sets, campers gather around crackling campfires to share stories beneath the starry skies, immersing themselves in the sights and sounds of this untamed wilderness. Car camping in Yellowstone is not just a convenient way to explore the park; it's a chance to connect with nature in one of the most extraordinary settings on Earth, where bison roam freely, and the landscape is a testament to the wonders of the natural world."
-            }
-            author={"Chat GPT"}
-            image={yellowstone}
-          />
-
-          <PostPreview
-            title={"Glacier 2021"}
-            text={
-              "Backpacking in Glacier National Park is a true wilderness adventure that transports hikers into a pristine and rugged landscape of unparalleled beauty. As you venture deep into the heart of the park's million-acre expanse, you'll find yourself surrounded by towering, glacier-carved peaks, crystalline alpine lakes, and lush, untouched forests. The park's extensive trail system offers backpackers a chance to explore its diverse ecosystems, from the rich valleys filled with wildflowers to the starkly beautiful high alpine tundra. Along the way, encounters with the park's resident wildlife, including grizzly bears, mountain goats, and elk, add an element of awe and exhilaration to the journey. Glacier National Park is a sanctuary for those seeking solitude and serenity, with backcountry campsites tucked away in pristine locations where the only sounds you'll hear are the rush of mountain streams and the whisper of the wind through the trees. Backpacking here is not just a physical challenge; it's an opportunity to forge a deep connection with nature and to experience one of the last remaining intact ecosystems in the lower 48 states."
-            }
-            author={"Chat GPT"}
-            image={glacier}
-          />
         </Stack>
       </Box>
     );

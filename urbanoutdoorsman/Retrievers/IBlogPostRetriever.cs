@@ -6,6 +6,8 @@ namespace urbanoutdoorsman
 		public Task<bool> IndexBlogPostAsync(BlogPost blog);
 
 		public BlogPost GetBlogPost(Guid id);
+
+		public Task<IEnumerable<BlogPost>> GetAllBlogPosts();
 	}
 }
 
