@@ -33,7 +33,20 @@ namespace urbanoutdoorsman
         public async Task<IEnumerable<BlogPost>> GetAllBlogPosts()
         {
             var response = await _client.SearchAsync<BlogPost>(s => s.Index(_index));
-            IEnumerable<BlogPost> allPosts  = response.Documents;
+            List<BlogPost> allPosts = new();
+
+            if (!response.Hits.Any())
+            {
+                return allPosts;
+            }
+            foreach (var hit in response.Hits)
+            {
+                BlogPost postData = hit.Source;
+                postData.Id = hit.Id;
+                allPosts.Add(postData);
+
+            }
+
             return allPosts;
         }
     }
