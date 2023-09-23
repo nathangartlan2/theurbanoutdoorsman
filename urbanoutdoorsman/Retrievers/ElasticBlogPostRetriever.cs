@@ -35,10 +35,6 @@ namespace urbanoutdoorsman
             var response = await _client.SearchAsync<BlogPost>(s => s.Index(_index));
             List<BlogPost> allPosts = new();
 
-            if (!response.Hits.Any())
-            {
-                return allPosts;
-            }
             foreach (var hit in response.Hits)
             {
                 BlogPost postData = hit.Source;

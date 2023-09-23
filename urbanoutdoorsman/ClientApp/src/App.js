@@ -1,22 +1,31 @@
-import React, { Component } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import AppRoutes from './AppRoutes';
-import { Layout } from './components/Layout';
-import './custom.css';
+import React, { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import AppRouteBuilder from "./AppRouteBuilder";
+import { Layout } from "./components/Layout";
+import "./custom.css";
 
-export default class App extends Component {
-  static displayName = App.name;
+const App = () => {
+  const [blogs, setBlogs] = useState([]);
 
-  render() {
-    return (
-      <Layout>
-        <Routes>
-          {AppRoutes.map((route, index) => {
-            const { element, ...rest } = route;
-            return <Route key={index} {...rest} element={element} />;
-          })}
-        </Routes>
-      </Layout>
-    );
-  }
-}
+  useEffect(() => {
+    async function fetchData() {
+      const routes = await AppRouteBuilder();
+      setBlogs(routes);
+    }
+
+    // Call the fetchData function when the component mounts
+    fetchData();
+  }, []);
+
+  return (
+    <Layout>
+      <Routes>
+        {blogs.map((route, index) => {
+          const { element, ...rest } = route;
+          return <Route key={index} {...rest} element={element} />;
+        })}
+      </Routes>
+    </Layout>
+  );
+};
+export default App;
