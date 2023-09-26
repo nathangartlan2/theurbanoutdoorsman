@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../css/PostPreview.module.css";
 
-const PostPreview = ({ id, title, author, text, image }) => {
+const PostPreview = ({ id, title, author, text, image, onClick }) => {
   const TEXT_PREVIEW_LENGTH = 30;
 
   const appendText = (text) => {
@@ -21,7 +21,7 @@ const PostPreview = ({ id, title, author, text, image }) => {
   };
 
   return (
-    <div className={styles.component}>
+    <div className={styles.component} onClick={() => onClick(id)}>
       <div className={styles.postCopy}>
         <h1>{title}</h1>
         <h5>{author}</h5>
