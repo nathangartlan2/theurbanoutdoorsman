@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../css/PostPreview.module.css";
 
 const PostPreview = ({ id, title, author, text, image }) => {
-  const TEXT_PREVIEW_LENGTH = 40;
+  const TEXT_PREVIEW_LENGTH = 30;
 
   const appendText = (text) => {
     const arrayOfWords = text.split(" ");
@@ -25,7 +25,7 @@ const PostPreview = ({ id, title, author, text, image }) => {
       <div className={styles.postCopy}>
         <h1>{title}</h1>
         <h5>{author}</h5>
-        <body>{appendText(text)}</body>
+        <p className="appendedText">{appendText(text)}</p>
       </div>
       <img className={styles.img} src={image}></img>
     </div>

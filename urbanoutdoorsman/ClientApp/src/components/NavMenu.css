@@ -2,6 +2,8 @@
   white-space: normal;
   text-align: center;
   word-break: break-all;
+  color: #442D0F;
+  font-size: 32px;
 }
 
 html {
@@ -17,3 +19,10 @@ html {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
+.main-nav-bar {
+  background-color: #ABBD8A;
+}
+
+.text-dark {
+  color: blue;
+}

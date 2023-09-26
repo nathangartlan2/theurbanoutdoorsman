@@ -32,12 +32,12 @@ export class NavMenu extends Component {
     return (
       <header>
         <Navbar
-          className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3"
+          className="main-nav-bar navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3"
           container
           light
         >
           <NavbarBrand tag={Link} to="/">
-            urbanoutdoorsman
+            The Urban Outdoorsman
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse
