@@ -33,31 +33,48 @@ const Tags = () => {
   };
 
   return (
-    <div>
-      <Autocomplete
-        value={""}
-        onChange={(e, newValue) => {
-          addTag(newValue);
-          setInputValue("");
-        }}
-        disablePortal
-        id="tag-autocomplete"
-        options={getTags()}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Tags" />}
-      />
-      <ul>
-        {tags.map((tag) => {
-          return (
-            <li>
-              <div>
-                <p>{tag}</p>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    // <div>
+    //   <Autocomplete
+    //     multiple={true}
+    //     value={""}
+    //     onChange={(e, newValue) => {
+    //       addTag(newValue);
+    //       setInputValue("");
+    //     }}
+    //     disablePortal
+    //     id="tag-autocomplete"
+    //     options={getTags()}
+    //     sx={{ width: 300 }}
+    //     renderInput={(params) => <TextField {...params} label="Tags" />}
+    //   />
+    //   <ul>
+    //     {tags.map((tag) => {
+    //       return (
+    //         <li>
+    //           <div>
+    //             <p>{tag}</p>
+    //           </div>
+    //         </li>
+    //       );
+    //     })}
+    //   </ul>
+    // </div>
+
+    <Autocomplete
+      multiple
+      id="tags-standard"
+      options={getTags()}
+      getOptionLabel={(option) => option}
+      defaultValue={[]}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          variant="standard"
+          label="Select Activities at this location"
+          placeholder="Tags"
+        />
+      )}
+    />
   );
 };
 

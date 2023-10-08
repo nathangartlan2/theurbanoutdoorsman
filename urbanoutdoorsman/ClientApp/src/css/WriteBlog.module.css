@@ -1,7 +1,35 @@
 .BlogInput {
-    height:50vh;
+    height:40vh;
+    display: flex;
 }
 
+
+
 .Form {
+    padding: 10px;
+    padding-left: 20px;
     display: grid;
+    width: 70%;
+    height: 80vh;
+
+}
+
+.Title{
+    width : 30%;
+    padding: 10px;
+    left:30%;
+}
+.TextInput{
+    height: 30vh;
+}
+
+.ImageUpload{
+    padding: 10px;
+    width: 40%;
+    height: 80vh;
+    background-color: brown;
+}
+
+.LocationPicker{
+    display: flex;
 }

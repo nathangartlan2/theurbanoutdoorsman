@@ -9,6 +9,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./NavMenu.css";
+import { Autocomplete, TextField } from "@mui/material";
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
@@ -29,6 +30,8 @@ export class NavMenu extends Component {
   }
 
   render() {
+    const params = ["Skiing", "Hiking", "Camping"];
+
     return (
       <header>
         <Navbar
@@ -39,6 +42,14 @@ export class NavMenu extends Component {
           <NavbarBrand tag={Link} to="/">
             The Urban Outdoorsman
           </NavbarBrand>
+
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={params}
+            sx={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="Search" />}
+          />
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse
             className="d-sm-inline-flex flex-sm-row-reverse"

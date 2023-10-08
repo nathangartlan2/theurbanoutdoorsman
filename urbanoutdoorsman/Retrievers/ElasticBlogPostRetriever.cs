@@ -5,6 +5,8 @@ namespace urbanoutdoorsman
 {
 	public class ElasticBlogPostRetriever : IBlogPostRetriever
 	{
+        private readonly int MAX_QUERY_SIZE = 1000;
+
         private readonly ElasticsearchClient _client;
         private readonly string _index;
 
@@ -32,7 +34,10 @@ namespace urbanoutdoorsman
 
         public async Task<IEnumerable<BlogPost>> GetAllBlogPosts()
         {
-            var response = await _client.SearchAsync<BlogPost>(s => s.Index(_index));
+            var response = await _client.SearchAsync<BlogPost>(s =>
+                s.Index(_index)
+                .Size(MAX_QUERY_SIZE));
+
             List<BlogPost> allPosts = new();
 
             if (!response.Hits.Any())
