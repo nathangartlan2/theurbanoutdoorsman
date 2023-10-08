@@ -1,4 +1,10 @@
+.header {
+    height: 20vh;
+}
+
 .mainContent {
     padding: 0;
     background-color: #FCF5E5;
+    height: 80vh;
+    width : 100%
 }

@@ -6,6 +6,8 @@ import { alpha, styled } from "@mui/material/styles";
 import TitleInput from "./TitleInput";
 import ImageUpload from "./ImageUpload";
 import LocationPicker from "./LocationPicker";
+import { Input } from "@mui/base";
+import { Button } from "@mui/material";
 
 const WriteBlog = () => {
   const [previewing, setPreviewing] = useState(false);
@@ -17,10 +19,10 @@ const WriteBlog = () => {
   const [tags, setTags] = useState([]);
 
   const inputView = (
-    <div className={customStyles.BlogInput}>
+    <div className={customStyles.BlogTextInput}>
       <form className={customStyles.Form}>
         <TitleInput blogTitle={blogTitle} setBlogTitle={setBlogTitle} />
-        <LocationPicker />
+        <LocationPicker location={location} setLocation={setLocation} />
         <Tags />
 
         <textArea
@@ -29,6 +31,7 @@ const WriteBlog = () => {
           value={blogContent}
           onChange={(e) => setBlogContent(e.target.value)}
           type="text"
+          resize="none"
         ></textArea>
       </form>
       <ImageUpload images={images} setImages={setImages} />
@@ -71,12 +74,14 @@ const WriteBlog = () => {
   const submitButton = <StyledButton text="Submit Post" onClick={sumbitPost} />;
 
   return (
-    <div>
+    <div className={customStyles.BlogInput}>
       {previewing ? previewView : inputView}
-      <StyledButton
-        text={previewing ? "Edit" : "Preview Your Post"}
+      <Button
         onClick={() => setPreviewing(!previewing)}
-      />
+        className={customStyles.PreviewPostButton}
+      >
+        {previewing ? "Edit" : "Preview Your Post"}
+      </Button>
       {previewing ? submitButton : <></>}
     </div>
   );

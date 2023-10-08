@@ -1,22 +1,36 @@
-import React, { Component } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import AppRoutes from './AppRoutes';
-import { Layout } from './components/Layout';
-import './custom.css';
+import React, { Component } from "react";
+import { Route, Routes } from "react-router-dom";
+import AppRoutes from "./AppRoutes";
+import { Layout } from "./components/Layout";
+import "./custom.css";
+import { createTheme, ThemeProvider } from "@mui/material";
 
 export default class App extends Component {
   static displayName = App.name;
 
   render() {
+    const theme = createTheme({
+      palette: {
+        primary: {
+          main: "#442D0F",
+        },
+      },
+      typography: {
+        fontFamily: "Lato",
+      },
+    });
+
     return (
-      <Layout>
-        <Routes>
-          {AppRoutes.map((route, index) => {
-            const { element, ...rest } = route;
-            return <Route key={index} {...rest} element={element} />;
-          })}
-        </Routes>
-      </Layout>
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <Routes>
+            {AppRoutes.map((route, index) => {
+              const { element, ...rest } = route;
+              return <Route key={index} {...rest} element={element} />;
+            })}
+          </Routes>
+        </Layout>
+      </ThemeProvider>
     );
   }
 }

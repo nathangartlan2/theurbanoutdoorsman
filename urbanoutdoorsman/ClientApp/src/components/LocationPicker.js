@@ -3,6 +3,7 @@ import customStyles from "../css/WriteBlog.module.css";
 import StyledButton from "./StyledButton";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import { Button } from "@mui/material";
 
 const LocationPicker = ({ location, setLocation }) => {
   const requestLocatonOptions = () => {
@@ -78,20 +79,25 @@ const LocationPicker = ({ location, setLocation }) => {
       onChange={(event, newValue) => {
         setLocation(newValue);
       }}
+      variant="standard"
       id="location-picker"
       options={requestLocatonOptions()}
       sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Location" />}
+      renderInput={(params) => (
+        <TextField {...params} variant="standard" label="Location" />
+      )}
     />
   );
 
   return (
     <div className={customStyles.LocationPicker}>
       {locationPicker}
-      <StyledButton
-        text="Request a new Location"
+      <Button
         onClick={() => alert("Adding a new location")}
-      />
+        className={customStyles.LocationPickerButton}
+      >
+        Request a new Location
+      </Button>
     </div>
   );
 };

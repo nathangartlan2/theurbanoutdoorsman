@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Autocomplete, TextField } from "@mui/material";
-import StyledButton from "./StyledButton";
+import customStyles from "../css/WriteBlog.module.css";
 
 const Tags = () => {
   const [tags, setTags] = useState([]);
@@ -33,35 +33,9 @@ const Tags = () => {
   };
 
   return (
-    // <div>
-    //   <Autocomplete
-    //     multiple={true}
-    //     value={""}
-    //     onChange={(e, newValue) => {
-    //       addTag(newValue);
-    //       setInputValue("");
-    //     }}
-    //     disablePortal
-    //     id="tag-autocomplete"
-    //     options={getTags()}
-    //     sx={{ width: 300 }}
-    //     renderInput={(params) => <TextField {...params} label="Tags" />}
-    //   />
-    //   <ul>
-    //     {tags.map((tag) => {
-    //       return (
-    //         <li>
-    //           <div>
-    //             <p>{tag}</p>
-    //           </div>
-    //         </li>
-    //       );
-    //     })}
-    //   </ul>
-    // </div>
-
     <Autocomplete
       multiple
+      className={customStyles.TaggedActivities}
       id="tags-standard"
       options={getTags()}
       getOptionLabel={(option) => option}

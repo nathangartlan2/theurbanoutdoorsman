@@ -8,10 +8,8 @@ export class Layout extends Component {
   render() {
     return (
       <div>
-        <NavMenu />
-        <Container className="mainContent" fluid>
-          {this.props.children}
-        </Container>
+        <NavMenu className="header" />
+        <div className="mainContent">{this.props.children}</div>
       </div>
     );
   }
