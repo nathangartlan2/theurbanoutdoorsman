@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "../css/PostPreview.module.css";
+import { useOutletContext } from "react-router-dom";
 
-const FullBlog = ({ blog }) => {
+const FullBlog = () => {
+  const [blog, setBlog] = useOutletContext();
   return (
     <div className={styles.component}>
       <div className={styles.postCopy}>

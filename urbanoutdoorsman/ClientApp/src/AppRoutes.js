@@ -1,19 +1,28 @@
-import { FetchData } from "./components/FetchData";
-import WriteBlog from "./components/WriteBlog";
-import HomeView from "./components/HomeView";
+import WriteBlog from "./components/WriteBlog/WriteBlog";
+import MainView from "./components/MainView";
+import Home from "./routes/Home";
+import BlogLandingPage, { BlogsLoader } from "./components/BlogLandingPage";
+import FullBlog from "./components/FullBlog";
 
 const AppRoutes = [
   {
-    index: true,
-    element: <HomeView />,
-  },
-  {
-    path: "/fetch-data",
-    element: <FetchData />,
-  },
-  {
-    path: "/write-blog",
-    element: <WriteBlog />,
+    path: "/",
+    element: <MainView />,
+    children: [
+      { index: true, element: <Home /> },
+      {
+        path: "blogs",
+        element: <BlogLandingPage />,
+        loader: BlogsLoader,
+        children: [
+          { path: "/blogs/:id", element: <FullBlog />, loader: BlogsLoader },
+        ],
+      },
+      {
+        path: "/write-blog",
+        element: <WriteBlog />,
+      },
+    ],
   },
 ];
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Tags from "./Tags";
-import StyledButton from "./StyledButton";
-import customStyles from "../css/WriteBlog.module.css";
+import StyledButton from "../StyledButton";
+import customStyles from "../../css/WriteBlog.module.css";
 import { alpha, styled } from "@mui/material/styles";
 import TitleInput from "./TitleInput";
 import ImageUpload from "./ImageUpload";
@@ -31,7 +31,6 @@ const WriteBlog = () => {
           value={blogContent}
           onChange={(e) => setBlogContent(e.target.value)}
           type="text"
-          resize="none"
         ></textArea>
       </form>
       <ImageUpload images={images} setImages={setImages} />

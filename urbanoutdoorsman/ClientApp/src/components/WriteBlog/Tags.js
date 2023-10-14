@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Autocomplete, TextField } from "@mui/material";
-import customStyles from "../css/WriteBlog.module.css";
+import customStyles from "../../css/WriteBlog.module.css";
 
 const Tags = () => {
   const [tags, setTags] = useState([]);

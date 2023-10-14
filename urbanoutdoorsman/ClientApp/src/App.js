@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import AppRoutes from "./AppRoutes";
-import { Layout } from "./components/Layout";
 import "./custom.css";
 import { createTheme, ThemeProvider } from "@mui/material";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 export default class App extends Component {
   static displayName = App.name;
@@ -14,22 +14,21 @@ export default class App extends Component {
         primary: {
           main: "#442D0F",
         },
+        secondary: {
+          main: "#ABBD8A",
+        },
       },
       typography: {
         fontFamily: "Lato",
+      },
+      link: {
+        hover: "#ABBD8A",
       },
     });
 
     return (
       <ThemeProvider theme={theme}>
-        <Layout>
-          <Routes>
-            {AppRoutes.map((route, index) => {
-              const { element, ...rest } = route;
-              return <Route key={index} {...rest} element={element} />;
-            })}
-          </Routes>
-        </Layout>
+        <RouterProvider router={createBrowserRouter(AppRoutes)} />
       </ThemeProvider>
     );
   }

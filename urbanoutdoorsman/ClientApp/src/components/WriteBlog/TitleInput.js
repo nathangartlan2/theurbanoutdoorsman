@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import { alpha, styled } from "@mui/material/styles";
-import customStyles from "../css/WriteBlog.module.css";
+import customStyles from "../../css/WriteBlog.module.css";
 
 const StyledTitle = styled(TextField)(({ theme }) => ({
   "&": {
